@@ -1,0 +1,20 @@
+userName: yunyequ_9PF2VB
+accessKey: z1rq9pWdysrmJDZzt7Lp
+framework: python
+app: bs://3c1b9fe340d1525fbfa43cb39599ab90f5b88e42
+platforms:
+  - platformName: android
+    deviceName: Huawei P30
+    platformVersion: 9.0
+  - platformName: android
+    deviceName: Vivo Y21
+    platformVersion: 11.0
+  - platformName: android
+    deviceName: Xiaomi Redmi Note 11
+    platformVersion: 11.0
+browserstackLocal: false
+buildName: flutter-test-build
+projectName: flutter-test-project
+buildIdentifier: ${BUILD_NUMBER}
+debug: true
+networkLogs: true

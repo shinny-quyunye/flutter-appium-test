@@ -1,0 +1,17 @@
+userName: yunyequ_9PF2VB
+accessKey: z1rq9pWdysrmJDZzt7Lp
+framework: python
+app: bs://sample.app
+platforms:
+  - platformName: android
+    deviceName: OnePlus 11R
+    platformVersion: 13.0
+  - platformName: android
+    deviceName: Huawei P30
+    platformVersion: 9.0
+  - platformName: android
+    deviceName: Xiaomi Redmi Note 11
+    platformVersion: 11.0
+browserstackLocal: true
+buildName: browserstack-build-1
+projectName: BrowserStack Sample
