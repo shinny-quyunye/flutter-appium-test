@@ -4,6 +4,7 @@ from appium.webdriver.webdriver import AppiumOptions, WebDriver
 from selenium.common.exceptions import WebDriverException
 from enum import Enum
 from datetime import datetime
+import os
 
 # KuaiqiDriver
 # 封装了Appium的WebDriver, Appium Flutter Driver, UIAutomator2 / XCUITest 等驱动的基本配置
@@ -126,9 +127,20 @@ class TradeMode(Enum):
 logId: int = 0
 
 # 记录日志
+# 日志文件将追加写入到log/executions.log文件，同时print在控制台中
 def logEvent(event: str):
     global logId
-    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
-    print(f"[log{logId} {current_time}] 执行操作: {event}")
     logId += 1
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+    # 生成日志内容
+    log_message = f"[log{logId} {current_time}] 执行操作: {event}"
+    # 打印日志到控制台
+    print(log_message)
+    # 追加写入日志到文件
+    log_dir = "log"
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
+    with open(os.path.join(log_dir, "executions.log"), "a", encoding="utf-8") as log_file:
+        log_file.write(log_message + "\n")
+    
 

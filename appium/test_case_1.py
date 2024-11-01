@@ -12,23 +12,26 @@ KuaiqiDriver.initDriver(getAppiumServerUrl(), getHybridCapabilities())
 # 等待APP加载完成
 kuaiqiExecutor.waitForLoad()
 
-# 随机选择初始环境（交易账号登录）
-# todo
-
-# 执行随机触控（点击/滑动/长按）操作
+# 定义随机触控操作的类型范围: 点击, 滑动, 长按
 touchActions = [
     kuaiqiExecutor.randomClick,
     kuaiqiExecutor.randomSwipe,
     kuaiqiExecutor.randomLongPress
 ]
-for i in range(100):
-    action = random.choice(touchActions)
-    executeCount = random.randint(2, 5)
-    action(count = executeCount)
 
-# 开始执行前后台/网络环境的随机切换操作
-kuaiqiExecutor.randomKeyboardInput()
-kuaiqiExecutor.randomNetworkEnvironment()
+# 记录随机操作执行次数
+executeCount: int = 0
+while True:
+    executeCount += 1
+    # 执行随机触控操作(点击 / 滑动 / 长按)
+    action = random.choice(touchActions)
+    action(count = random.randint(2, 5))
+    if executeCount % 100 == 0:
+        # 执行前后台随机切换操作
+        kuaiqiExecutor.randomBackground(min_seconds = 1, max_seconds = 30)
+    elif executeCount % 300 == 0:
+        # 执行网络环境的随机切换操作
+        kuaiqiExecutor.randomNetworkEnvironment()
 
 # 结束测试
 KuaiqiDriver.quit()
